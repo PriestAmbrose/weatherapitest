@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather API TESTBED</title>
+</head>
+<body>
+    <input type="text">
+    <button>Get temperature</button>
+    <script>
+        let btn = document.getElementsByTagName('button')[0];
+        btn.addEventListener('click', ()=>{
+            //Make a call to an external API
+            let city = document.querySelectorAll('input')[0].value;
+            fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=c4a7131115bda3cf1749b7acb1672af4`)
+            .then( (response)=>{
+                return response.json();
+            })
+            .then((result)=>{
+                alert(result.main.temp);
+            })
+        })
+
+    </script>
+    
+<!-- Resources:
+1) OneWeatherMobile App - https://openweathermap.org/    
+2) JavaScript HTML DOM EventListener - https://www.w3schools.com/js/js_htmldom_eventlistener.asp      -->
